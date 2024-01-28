@@ -16,4 +16,5 @@ router.put("/update", authMiddleware, updateDetails);
 // Router for searching
 router.get("/bulk", bulkSearch)
 
+
 module.exports = router;
