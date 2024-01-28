@@ -1,6 +1,7 @@
 const express = require("express");
 const database = require("./config/db");
 const userRoutes = require("./routes/user");
+const accountRoutes = require("./routes/account");
 const cookieParser = require("cookie-parser");
 const cors = require("cors")
 const app = express();
@@ -17,6 +18,7 @@ app.use(
 );
 
 app.use('/api/v1/user', userRoutes);
+app.use('/api/v1/account', accountRoutes)
 
 app.get('/', (req, res) => {
     res.json({

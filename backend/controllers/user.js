@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt")
 const User = require('../models/user');
+const Account = require('../models/account');
 const zod = require("zod");
 const jwt = require("jsonwebtoken");
 
@@ -41,6 +42,7 @@ exports.signup = async(req, res) => {
             })
         }
     
+        // Create user
         const user = await User.create({
             username: req.body.username,
             password: req.body.password,
@@ -48,6 +50,12 @@ exports.signup = async(req, res) => {
             lastName: req.body.lastName,
         })
         const userId = user._id;
+
+        // Create account
+        await Account.create({
+            userId, 
+            balance: 10000
+        });
     
         const token = jwt.sign({
             userId
