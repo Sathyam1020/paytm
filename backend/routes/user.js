@@ -14,7 +14,7 @@ router.post("/signup", signup);
 router.put("/update", authMiddleware, updateDetails);
 
 // Router for searching
-router.get("/bulk", bulkSearch)
+router.get("/bulk", authMiddleware, bulkSearch);
 
 
 module.exports = router;
